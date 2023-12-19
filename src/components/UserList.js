@@ -1,14 +1,21 @@
 import React from "react";
 import UserCard from "./UserCard";
 
-function UserList(props) {
+function UserList({users, setUserTweets}) {
+  
+
   return (
     <div className="ui cards">
-      {props.users.map((user) => (
+      {users.map((user) => (
         <UserCard
           key={user.id}
-          handleUserClick={() => console.log("u clicked the user")}
+          handleUserClick={(userTw) => {
+              console.log(userTw)
+              setUserTweets(userTw)
+            }
+          }
           {...user}
+          user={user}
         />
       ))}
     </div>
@@ -16,3 +23,6 @@ function UserList(props) {
 }
 
 export default UserList;
+
+
+//props.setUserTweets(userTw)
